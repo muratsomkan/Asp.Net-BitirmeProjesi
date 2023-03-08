@@ -1,0 +1,55 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!-- ********************** -->
+<!--     I N T R O          -->
+<!-- ********************** -->
+<div id="intro">
+    <div id="intro_wrap">
+        <div class="container_12">
+            <div id="breadcrumbs" class="grid_12">
+                <a asp-action="index" asp-controller="home">Ana Sayfa</a>
+                &gt; <a href="cart.html">Üye Girişi</a>
+            </div>
+            <h1>Üye Giriş/Kayıt Sayfası</h1>
+        </div>
+    </div>
+</div>
+<!-- end of intro -->
+
+<!-- ********************** -->
+<!--      C O N T E N T     -->
+<!-- ********************** -->
+<div id="content" class="container_16">
+    <div class="grid_16">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2>Yeni Hesap Oluştur.</h2>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" style="width:350px;"/>
+                <label asp-for="Input.Email"></label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" size="150" style="width:350px;" />
+                <label asp-for="Input.Password"></label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" size="150" style="width:350px;" />
+                <label asp-for="Input.ConfirmPassword"></label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Kayıt Ol!</button>
+            <button id="registerReset" type="reset" class="w-100 btn btn-lg btn-info">Temizle!</button>
+        </form>
+        
+    </div>
+
+</div>
+<!-- end of content -->
+

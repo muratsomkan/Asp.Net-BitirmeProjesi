@@ -1,0 +1,348 @@
+﻿@model Shoppica.MVC.ViewModels.ProductVM
+
+@{
+    string catName = Model.Category.CategoryName;
+    int k = (int)Model.Category.TopId;
+}
+
+
+<!-- ********************** -->
+<!--     I N T R O          -->
+<!-- ********************** -->
+<div id="intro">
+    <div id="intro_wrap">
+        <div class="container_12">
+            <div id="breadcrumbs" class="grid_12">
+                <a href="/home/index">Ana Sayfa</a>
+                &gt;
+                <a href="">@catName</a>
+            </div>
+            <h1>@catName</h1>
+        </div>
+    </div>
+</div>
+<!-- end of intro -->
+<!-- ********************** -->
+<!--      C O N T E N T     -->
+<!-- ********************** -->
+<div id="content" class="product_view container_16">
+
+    <div id="product" class="grid_12">
+        <div id="product_images" class="grid_6 alpha">
+            <a id="product_image_preview" rel="prettyPhoto[gallery]" href="~/images/product/@Model.Image">
+                <img id="image" src="~/images/product/@Model.Image" title="@Model.ProductName" alt="@Model.ProductName" />
+            </a>
+        </div>
+        <div id="product_info" class="grid_6 omega">
+            @if (@Model.IsSpecial == false)
+            {
+                @*İndirimsiz Ürün*@
+                <p class="s_price"> <span class="s_currency s_before"> ₺</span>@String.Format("{0:0.00}",@Model.UnitPrice)</p>
+            }
+            else
+            {
+                @*İndirimli Ürün*@
+                <p class="s_price s_promo_price">
+                    <span class="s_old_price">
+                        <span class="s_currency s_before">₺</span>@String.Format("{0:0.00}",@Model.UnitPrice)
+                    </span><span class="s_currency s_before">₺</span>@String.Format("{0:0.00}",@Model.Discount)
+                </p>
+            }
+            <dl class="clearfix">
+                <dt>Stok Durumu</dt>
+                <dd>Var</dd>
+                <dt>Kategori</dt>
+                <dd>@Model.Category.CategoryName</dd>
+                <dt>Marka</dt>
+                <dd><a href="#">@Model.Brand.BrandName</a></dd>
+                <dt>Ortalama Puan</dt>
+                <dd>
+                    <p class="s_rating s_rating_5"><span style="width: 100%;" class="s_percent"></span></p>
+                </dd>
+            </dl>
+            <div id="product_share" class="clearfix">
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style ">
+                    <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                    <a class="addthis_button_tweet"></a>
+                    <a class="addthis_counter addthis_pill_style"></a>
+                </div>
+                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4de0eff004042e7a"></script>
+                <!-- AddThis Button END -->
+            </div>
+
+            <div id="product_buy" class="clearfix">
+                <form method="post" asp-controller="cart" asp-action="cartAdd" enctype="multipart/form-data">
+                    <label for="product_buy_quantity">Adet:</label>
+                    <input id="product_buy_quantity" name="quan" type="text" size="2" value="1"/>
+                    <input id="id" name="id" hidden value="@Model.Id"/>
+                    <button type="submit" id="add_to_cart" class="s_main_color_bgr">  
+                        <span class="s_text"><span class="s_icon"></span> Sepete Ekle </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="s_tabs grid_12 alpha omega">
+            <ul class="s_tabs_nav clearfix">
+                <li><a href="#product_description">Açıklama</a></li>
+                <li><a href="#product_reviews">Yorumlar</a></li>
+                <li><a href="#product_gallery">Resimler</a></li>
+            </ul>
+            <div class="s_tab_box">
+
+                <div id="product_description">
+                    <div class="cpt_product_description ">
+                        @Model.Description
+                    </div>
+                    <!-- cpt_container_end -->
+                </div>
+
+                <div id="product_reviews" class="s_listing">
+                    <div class="s_review last">
+                        <p class="s_author"><strong>Shoppica</strong><small>(29/03/2021)</small></p>
+                        <div class="right">
+                            <div class="s_rating_holder">
+                                <p class="s_rating s_rating_5"><span class="s_percent" style="width: 100%;"></span></p>
+                                <span class="s_average">5 out of 5 Stars!</span>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <p>Vestibulum molestie tellus rhoncus nulla cursus quis dictum orci laoreet! metus. Vestibulum molestie tellus rhoncus nulla cursus quis dictum orci laoreet! metus.</p>
+                    </div>
+                    <div class="pagination"><div class="results">Showing 1 to 1 of 1 (1 Pages)</div></div>
+                    <h2 class="s_title_1"><span class="s_main_color">Write</span> Review</h2>
+                    <div id="review_title" class="clear"></div>
+                    <div class="s_row_3 clearfix">
+                        <label><strong>Your Name:</strong></label>
+                        <input type="text" />
+                    </div>
+                    <div class="s_row_3 clearfix">
+                        <label><strong>Your Review:</strong></label>
+                        <textarea style="width: 98%;" rows="8" cols="50"></textarea>
+                        <p class="s_legend"><span style="color: #FF0000;">Note:</span> HTML is not translated!</p>
+                    </div>
+                    <div class="s_row_3 clearfix">
+                        <label><strong>Rating</strong></label>
+                        <span class="clear"></span> <span>Bad</span>&nbsp;
+                        <input type="radio" />
+                        &nbsp;
+                        <input type="radio" />
+                        &nbsp;
+                        <input type="radio" />
+                        &nbsp;
+                        <input type="radio" />
+                        &nbsp;
+                        <input type="radio" />
+                        &nbsp; <span>Good</span>
+                    </div>
+                    <span class="clear border_ddd"></span>
+                    <a class="s_button_1 s_main_color_bgr"><span class="s_text">Continue</span></a> <span class="clear"></span>
+                </div>
+
+                <div id="product_gallery">
+                    <ul class="s_thumbs clearfix">
+                        @foreach (var item in Model.ProductImages)
+                        {
+                            <li>
+                                <a class="s_thumb" href="~/images/product/@item.Image" title="@Model.ProductName" rel="prettyPhoto[gallery]">
+                                    <img src="~/images/product/@item.Image" width="120" title="@Model.ProductName" alt="@Model.ProductName" />
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="related_products" class="grid_12 alpha omega">
+            <h2 class="s_title_1"><span class="s_main_color">Related</span> Products</h2>
+            <div class="clear"></div>
+            <div class="s_grid_view s_listing clearfix">
+                <div class="s_item grid_3">
+                    <a class="s_thumb" href="product.html"><img src="~/images/product_140x140.jpg" title="Panasonic Lumix" alt="Panasonic Lumix" /></a>
+                    <h3><a href="product.html">Panasonic Lumix</a></h3>
+                    <p class="s_model">Product 4</p>
+                    <p class="s_price">94.00<span class="s_currency s_after"> eur</span></p>
+                    <a class="s_button_add_to_cart" href="cart.html"><span class="s_icon_16"><span class="s_icon"></span>Add to Cart</span></a>
+                </div>
+                <div class="s_item grid_3">
+                    <a class="s_thumb" href="product.html"><img src="~/images/product_140x140.jpg" title="Panasonic Lumix" alt="Panasonic Lumix" /></a>
+                    <h3><a href="product.html">Panasonic Lumix</a></h3>
+                    <p class="s_model">Product 4</p>
+                    <p class="s_price">94.00<span class="s_currency s_after"> eur</span></p>
+                    <a class="s_button_add_to_cart" href="cart.html"><span class="s_icon_16"><span class="s_icon"></span>Add to Cart</span></a>
+                </div>
+                <div class="s_item grid_3">
+                    <a class="s_thumb" href="product.html"><img src="~/images/product_140x140.jpg" title="Panasonic Lumix" alt="Panasonic Lumix" /></a>
+                    <h3><a href="product.html">Panasonic Lumix</a></h3>
+                    <p class="s_model">Product 4</p>
+                    <p class="s_price">94.00<span class="s_currency s_after"> eur</span></p>
+                    <a class="s_button_add_to_cart" href="cart.html"><span class="s_icon_16"><span class="s_icon"></span>Add to Cart</span></a>
+                </div>
+                <div class="s_item grid_3">
+                    <a class="s_thumb" href="product.html"><img src="~/images/product_140x140.jpg" title="Panasonic Lumix" alt="Panasonic Lumix" /></a>
+                    <h3><a href="product.html">Panasonic Lumix</a></h3>
+                    <p class="s_model">Product 4</p>
+                    <p class="s_price">94.00<span class="s_currency s_after"> eur</span></p>
+                    <a class="s_button_add_to_cart" href="cart.html"><span class="s_icon_16"><span class="s_icon"></span>Add to Cart</span></a>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div id="product_tags" class="grid_12 alpha omega">
+            <h2 class="s_title_1"><span class="s_main_color">Product</span> Tags</h2>
+            <div class="clear"></div>
+            <ul class="clearfix">
+                <li><a href="#">Centrino</a></li>
+                <li><a href="#">Intel</a></li>
+                <li><a href="#">VAIO</a></li>
+                <li><a href="#">laptop</a></li>
+                <li><a href="#">notebook</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+
+    <div id="right_col" class="grid_3">
+        <div id="cart_side" class="s_box_1 s_cart_holder">
+            <h2 class="s_secondary_color">Sepetim</h2>
+            <div id="cart_side_contents">
+                @*CartListVC'dan gelecek*@
+                @*<p class="s_mb_0">0 items</p>*@
+
+                @await Component.InvokeAsync("CartListVC")
+            </div>
+        </div>
+
+        <div id="categories_module" class="s_box">
+            <h2>Kategoriler</h2>
+            <div class="s_list_1">
+                <ul>
+                    @await Component.InvokeAsync("RightCategoriesVC", new {id=k})
+
+                </ul>
+            </div>
+        </div>
+
+        <div id="brands_module" class="s_box">
+            <h2>Brands</h2>
+            <select onchange="location = this.value">
+                <option> --- Lütfen Seçiniz --- </option>
+
+                @await Component.InvokeAsync("BrandVC")
+            </select>
+        </div>
+
+        <div id="bestseller_side" class="s_box clearfix">
+            <h2>En Çok Satanlar</h2>
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="iPhone 3GS 8GB" /></a>
+                <h3><a href="product.html">iPhone 3GS 8GB</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>587.50</span></a></p>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Hubo Boss Emotion" /></a>
+                <h3><a href="product.html">Hubo Boss Emotion</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>2,350.00</span></a></p>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Panasonic Lumix" /></a>
+                <h3><a href="product.html">Panasonic Lumix</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>94.00</span></a></p>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Casio Exilim Zoom" /></a>
+                <h3><a href="product.html">Casio Exilim Zoom</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>117.50</span></a></p>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Christian Dior Amber Woman" /></a>
+                <h3><a href="product.html">Christian Dior Amber Woman</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>328.99</span></a></p>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="iPod Classic" /></a>
+                <h3><a href="product.html">iPod Classic</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>117.50</span></a></p>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Sony VAIO" /></a>
+                <h3><a href="product.html">Sony VAIO</a></h3>
+                <p><a href="product.html"><span class="s_old"><span class="s_currency s_before">£</span>1,175.00</span> <span class="s_secondary_color"><span class="s_currency s_before">£</span>1,057.50</span></a></p>
+                <div class="s_rating_holder clearfix"><p class="s_rating s_rating_small s_rating_5 left"><span style="width: 100%;" class="s_percent"></span></p><span class="left">&nbsp;5/5</span></div>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Canon Digital Ixus 200 IS" /></a>
+                <h3><a href="product.html">Canon Digital Ixus 200 IS</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>117.50</span></a></p>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Hugo Boss Chrome" /></a>
+                <h3><a href="product.html">Hugo Boss Chrome</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>94.00</span></a></p>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Hennesy Paradis Extra" /></a>
+                <h3><a href="product.html">Hennesy Paradis Extra</a></h3>
+                <p><a href="product.html"><span class="s_old"><span class="s_currency s_before">£</span>1,175.00</span> <span class="s_secondary_color"><span class="s_currency s_before">£</span>1,057.50</span></a></p>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Elizabeth Arden Pretty" /></a>
+                <h3><a href="product.html">Elizabeth Arden Pretty</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>94.00</span></a></p>
+            </div>
+
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Sony Cyber Shot S1000" /></a>
+                <h3><a href="product.html">Sony Cyber Shot S1000</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>117.50</span></a></p>
+            </div>
+        </div>
+
+        <div id="information_module" class="s_box">
+            <h2>Bilgilendirme</h2>
+            <ul class="s_list_1">
+                <li><a href="static.html">Shoppica Hakkında</a></li>
+                <li><a href="static.html">Gizlilik/Güvenlik</a></li>
+                <li><a href="static.html">Kullanım Şartları</a></li>
+                <li><a href="contacts.html">İletişim</a></li>
+                <li><a href="sitemap.html">Site Haritası</a></li>
+            </ul>
+        </div>
+
+        <div id="featured_side" class="s_box clearfix">
+            <h2>Son Arananlar</h2>
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="White football trainers" /></a>
+                <h3><a href="product.html">White football trainers</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>117.50</span></a></p>
+            </div>
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Hubo Boss Emotion" /></a>
+                <h3><a href="product.html">Hubo Boss Emotion</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>2,350.00</span></a></p>
+            </div>
+            <div class="s_item s_size_1 clearfix">
+                <a class="s_thumb" href="product.html"><img src="~/images/product_38x38.jpg" width="38" height="38" alt="Christian Dior J'adore" /></a>
+                <h3><a href="product.html">Christian Dior J'adore</a></h3>
+                <p><a href="product.html"><span class="s_main_color"><span class="s_currency s_before">£</span>328.99</span></a></p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<!-- end of content -->

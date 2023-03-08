@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Shoppica.MVC.ViewModels.CategoryVM>
+
+
+@for (var i = 0; i < 6; i++)
+{
+    <div class="grid_2">
+        <h2>@Model.ToList()[i].CategoryName</h2>
+        <ul class="s_list_1">
+            @foreach (var item in @Model.ToList()[i].InverseTop)
+            {
+                <li><a href="/product/getproducts/@item.Id">@item.CategoryName</a></li>
+            }
+        </ul>
+    </div>
+}

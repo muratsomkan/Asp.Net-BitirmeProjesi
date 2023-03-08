@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Shoppica.MVC.ViewModels.ProductVM>
+
+<div id="product_intro" class="container_12">
+    <div id="product_intro_info" class="grid_5">
+
+        <div style="position: relative;">
+            <h2><a href="/product/getproductdetails/@Model.ToList()[0].Id">@Model.ToList()[0].ProductName</a></h2>
+
+            @if (Model.ToList()[0].Description.Length > 250)
+
+            {
+                <p class="s_desc">
+                    @Model.ToList()[0].Description.Substring(0, 250)
+                </p>
+            }
+            else
+            {
+                <p class="s_desc">
+                    @Model.ToList()[0].Description
+                </p>
+            }
+            @*<p class="s_desc"> @Model.ToList()[0].Description</p>*@
+            <div class="s_price_holder">
+                @if (Model.ToList()[0].IsSpecial == false)
+                {
+                    @*İndirimsiz Ürün*@
+                    <p class="s_price"> <span class="s_currency s_before"> ₺</span>@String.Format("{0:0.00}",Model.ToList()[0].UnitPrice)</p>
+                }
+                else
+                {
+                    @*İndirimli Ürün*@
+                    <p class="s_price s_promo_price">
+                        <span class="s_old_price">
+                            <span class="s_currency s_before">₺</span>@String.Format("{0:0.00}",Model.ToList()[0].UnitPrice)
+                        </span><span class="s_currency s_before">₺</span>@String.Format("{0:0.00}",Model.ToList()[0].Discount)
+                    </p>
+                }
+            </div>
+        </div>
+
+        @for (int i = 1; i < Model.ToList().Count; i++)
+        {
+            <div style="position: relative; display: none;">
+                <h2><a href="/product/getproductdetails/@Model.ToList()[i].Id">@Model.ToList()[i].ProductName</a></h2>
+                @*<p class="s_desc"> @Model.ToList()[i].Description</p>*@
+                @if (Model.ToList()[i].Description.Length > 250)
+
+                {
+                    <p class="s_desc">
+                        @Model.ToList()[i].Description.Substring(0, 250)
+                    </p>
+                }
+                else
+                {
+                    <p class="s_desc">
+                        @Model.ToList()[i].Description
+                    </p>
+                }
+                <div class="s_price_holder">
+                    @if (Model.ToList()[i].IsSpecial == false)
+                    {
+                        @*İndirimsiz Ürün*@
+                        <p class="s_price"> <span class="s_currency s_before"> ₺</span>@String.Format("{0:0.00}",Model.ToList()[i].UnitPrice)</p>
+                    }
+                    else
+                    {
+                        @*İndirimli Ürün*@
+                        <p class="s_price s_promo_price">
+                            <span class="s_old_price">
+                                <span class="s_currency s_before">₺</span>@String.Format("{0:0.00}",Model.ToList()[i].UnitPrice)
+                            </span><span class="s_currency s_before">₺</span>@String.Format("{0:0.00}",Model.ToList()[i].Discount)
+                        </p>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    <div id="product_intro_preview">
+        <div class="slides_container">
+            @foreach (var item in Model)
+            {
+                <div class="slideItem" style="display: none; width:300px;height:300px; text-align:center;">
+                    <a href="/product/getproductdetails/@item.Id"><img src="~/images/product/@item.Image" alt="" /></a>
+                </div>
+            }
+        </div>
+        <a class="s_button_prev" href="javascript:;"></a>
+        <a class="s_button_next" href="javascript:;"></a>
+    </div>
+</div>

@@ -1,0 +1,228 @@
+﻿<!-- ********************** -->
+<!--     I N T R O          -->
+<!-- ********************** -->
+
+<div id="intro">
+    <div id="intro_wrap">
+        <div class="container_12">
+            <div id="breadcrumbs" class="grid_12">
+                <a asp-action="index" asp-controller="home">Ana Sayfa</a>
+                &gt;
+                <a href="">Sipariş</a>
+            </div>
+            <h1>Sipariş Oluştur</h1>
+        </div>
+    </div>
+</div>
+<!-- end of intro -->
+
+
+<!-- ********************** -->
+<!--      C O N T E N T     -->
+<!-- ********************** -->
+<div id="content" class="container_12">
+
+    <div id="checkout" class="grid_12">
+        <form id="checkout_form" class="s_accordion" action="orders.html">
+            <h2>Fatura Bilgileri</h2>
+            <div>
+                <div class="grid_6 alpha">
+                    <h3><span class="s_secondary_color">Your</span> Kişisel Bilgiler</h3>
+                    <div class="s_row_2 clearfix">
+                        <label>Ad: *</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>Soyad: *</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>E-Mail: *</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>Telefon: *</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 s_mb_15 clearfix">
+                        <label>Fax:</label>
+                        <input type="text" size="30" />
+                    </div>
+                </div>
+                <div class="grid_6 omega">
+                    <h3><span class="s_secondary_color">Kayıtlı</span> Adres</h3>
+                    <div class="s_row_2 clearfix">
+                        <label>İş Adresi:</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>Ev Adresi: *</label>
+                        <input type="text" size="30" class="required" title="Address 1 must be between 3 and 128 characters!" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>Adres-2:</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>Şehir: *</label>
+                        <input type="text" size="30" class="required" title="City must be between 3 and 128 characters!" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label id="postcode">Posta Kodu: *</label>
+                        <input type="text" size="30" class="required" title="Postcode must be between 2 and 10 characters for this country!" />
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <p><label><input type="checkbox" /> Alışveriş adresim ile fatura adresi aynı olsun.</label></p>
+                <div class="clear"></div>
+                <a class="s_button_1 s_main_color_bgr"><span class="s_text">Adım 2 &rsaquo;</span></a>
+                <span class="clear"></span>
+                <br />
+            </div>
+            <h2>Teslimat Bilgileri</h2>
+            <div>
+                <div class="grid_6 alpha">
+                    <h3><span class="s_secondary_color">Your</span> Kişisel Bilgiler</h3>
+                    <div class="s_row_2 clearfix">
+                        <label>Ad: *</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>Soyad: *</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>E-Mail: *</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>Telefon: *</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 s_mb_15 clearfix">
+                        <label>Fax:</label>
+                        <input type="text" size="30" />
+                    </div>
+                </div>
+                <div class="grid_6 omega">
+                    <h3><span class="s_secondary_color">Kayıtlı</span> Adresler</h3>
+                    <div class="s_row_2 clearfix">
+                        <label>İş Adresi:</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>Ev Adresi: *</label>
+                        <input type="text" size="30" class="required" title="Address 1 must be between 3 and 128 characters!" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>Adres-2:</label>
+                        <input type="text" size="30" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label>Şehir: *</label>
+                        <input type="text" size="30" class="required" title="City must be between 3 and 128 characters!" />
+                    </div>
+                    <div class="s_row_2 clearfix">
+                        <label id="postcode1">Posta Kodu: *</label>
+                        <input type="text" size="30" class="required" title="Postcode must be between 2 and 10 characters for this country!" />
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <p><label><input type="checkbox" /> Alışveriş adresim ile fatura adresi aynı olsun.</label></p>
+                <div class="clear"></div>
+                <a class="s_button_1 s_ddd_bgr left"><span class="s_text">&lsaquo; Adım 1</span></a>
+                <a class="s_button_1 s_main_color_bgr"><span class="s_text">Adım 3 &rsaquo;</span></a>
+                <span class="clear"></span>
+                <br />
+            </div>
+            <h2>Kargo Türü</h2>
+            <div>
+                <p>Lütfen bu siparişte kullanmak için tercih ettiğiniz nakliye yöntemini seçin.</p>
+                <div class="s_row_3 clearfix">
+                    <label class="s_radio s_shipping_method clearfix" for="citylink.citylink">
+                        <input type="radio" id="citylink.citylink" checked="checked" />
+                        <span class="s_desc"><strong>Şehir</strong><br />Şehir (Ağırlık: 0.00kg) - 11.60<span class="s_currency s_after"> TL</span></span>
+                    </label>
+                    <label class="s_radio s_shipping_method clearfix" for="flat.flat">
+                        <input type="radio" id="flat.flat" />
+                        <span class="s_desc"><strong>Sabit Fiyat</strong><br />Sabit Nakliye Ücreti- 0.00<span class="s_currency s_after"> TL</span></span>
+                    </label>
+                    <label class="s_radio s_shipping_method clearfix" for="free.free">
+                        <input type="radio" id="free.free" />
+                        <span class="s_desc"><strong>Ücrertsiz Kargo</strong><br />Free Shipping - 0.00<span class="s_currency s_after"> TL</span></span>
+                    </label>
+                    <label class="s_radio s_shipping_method clearfix" for="parcelforce_48.parcelforce_48">
+                        <input type="radio" id="parcelforce_48.parcelforce_48" />
+                        <span class="s_desc"><strong>Birim Fiyat</strong><br />Birim Fiyat - 15.99<span class="s_currency s_after"> TL</span></span>
+                    </label>
+                    <label class="s_radio s_shipping_method clearfix" for="item.item">
+                        <input type="radio" id="item.item" />
+                        <span class="s_desc"><strong>Adet</strong><br />Adet ücret - 10.00<span class="s_currency s_after"> TL</span></span>
+                    </label>
+                    <label class="s_radio s_shipping_method clearfix" for="pickup.pickup">
+                        <input type="radio" id="pickup.pickup" />
+                        <span class="s_desc"><strong>Paket</strong><br />Paket ücreti - 100.00<span class="s_currency s_after"> TL</span></span>
+                    </label>
+                    <label class="s_radio s_shipping_method clearfix" for="royal_mail.airmail">
+                        <input type="radio" id="royal_mail.airmail" />
+                        <span class="s_desc"><strong>Royal Mail</strong><br />Airmail (Weight: 0.00kg) (Estimated Time:) - 1.31<span class="s_currency s_after"> TL</span></span>
+                    </label>
+                    <label class="s_radio s_shipping_method clearfix" for="royal_mail.international_signed">
+                        <input type="radio" id="royal_mail.international_signed" />
+                        <span class="s_desc"><strong>Mail</strong><br />International Signed (Weight: 0.00kg) (Estimated Time:) - 4.91<span class="s_currency s_after"> TL</span></span>
+                    </label>
+                    <label class="s_radio s_shipping_method clearfix" for="royal_mail.surface">
+                        <input type="radio" id="royal_mail.surface" />
+                        <span class="s_desc"><strong>Royal Mail</strong><br />Surface (Weight: 0.00kg) (Estimated Time:) - 0.91<span class="s_currency s_after"> TL</span></span>
+                    </label>
+                </div>
+                <div class="clear"></div>
+                <h3><span class="s_secondary_color">Sipariş</span> Notları</h3>
+                <div class="s_row_3 clearfix">
+                    <textarea rows="8" style="width: 99%;" cols="50"></textarea>
+                </div>
+                <div class="s_row_3 clearfix">
+                    <label class="s_checkbox"><input type="checkbox" /> Koşulları/Şartları okudum ve kabul ediyorum.</label>
+                </div>
+                <div class="clear"></div>
+                <a class="s_button_1 s_ddd_bgr left"><span class="s_text">&lsaquo; Adım 2</span></a>
+                <a class="s_button_1 s_main_color_bgr"><span class="s_text">Adım 4 &rsaquo;</span></a>
+                <span class="clear"></span>
+                <br />
+            </div>
+            <h2 class="s_last">Ödeme Yöntemlerini</h2>
+            <div class="s_last">
+                <p>Lütfen bu siparişte kullanmak için tercih edilen ödeme yöntemini seçiniz.</p>
+                <div class="s_row_3 clearfix grid_7 alpha">
+                    <label class="s_radio s_shipping_method clearfix">
+                        <input type="radio" id="alertpay" checked="checked" />
+                        <strong>Kredi Kartı / Debit Kart </strong>
+                    </label>
+                    <label class="s_radio s_shipping_method clearfix">
+                        <input type="radio" id="authorizenet_aim" />
+                        <strong>Havale</strong>
+                    </label>
+                    <label class="s_radio s_shipping_method clearfix">
+                        <input type="radio" id="cod" />
+                        <strong>Kapıda Ödeme</strong>
+                    </label>
+                </div>
+                <div class="clear"></div>
+                <h3><span class="s_secondary_color">Sipariş</span> Notları</h3>
+                <div class="s_row_3 clearfix">
+                    <textarea rows="8" style="width: 99%;" cols="50"></textarea>
+                </div>
+                <div class="s_row_3 clearfix">
+                    <label class="s_checkbox"><input type="checkbox" /> Koşulları/Şartları okudum ve kabul ediyorum.</label>
+                </div>
+                <div class="clear"></div>
+                <a class="s_button_1 s_ddd_bgr left"><span class="s_text">&lsaquo; Adım 3</span></a>
+                <a class="s_button_1 s_main_color_bgr" onclick="$('#checkout_form').submit();"><span class="s_text">Sipariş Ver</span></a>
+                <span class="clear"></span>
+                <br />
+            </div>
+        </form>
+    </div>
+
+</div>
+<!-- end of content -->

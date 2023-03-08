@@ -1,0 +1,92 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+<!-- ********************** -->
+<!--     I N T R O          -->
+<!-- ********************** -->
+<div id="intro">
+    <div id="intro_wrap">
+        <div class="container_12">
+            <div id="breadcrumbs" class="grid_12">
+                <a asp-action="index" asp-controller="home">Ana Sayfa</a>
+                &gt; <a href="cart.html">Üye Girişi</a>
+            </div>
+            <h1>Üye Giriş/Kayıt Sayfası</h1>
+        </div>
+    </div>
+</div>
+<!-- end of intro -->
+<!-- ********************** -->
+<!--      C O N T E N T     -->
+<!-- ********************** -->
+<div id="content" class="container_16">
+    <div id="login_page" class="grid_16">
+
+        <div class="grid_8 alpha">
+            <h2 class="s_title_1"><span class="s_secondary_color">Müşteri</span> olmak istiyorum.</h2>
+            <div class="clear"></div>
+            <form id="account" action="forms.html">
+                <div class="s_row_3 clearfix">
+                    <p>Sipariş oluşturma seçenekleri:</p>
+                    <label class="s_radio" for="register">
+                        <input type="radio" id="register" checked="checked" />
+                        <strong>Kayıt olarak</strong>
+                    </label>
+                    <label for="guest">
+                        <input type="radio" id="guest" />
+                        <strong>Misafir olarak</strong>
+                    </label>
+                    <br />
+                    <p>
+                        Bir hesap oluşturarak daha hızlı alışveriş yapabilir, bir siparişin durumu hakkında güncel bilgilere sahip olabilir ve
+                        daha önce verdiğiniz siparişleri takip edebilirsiniz.
+                    </p>
+
+                </div>
+                <span class="clear border_ddd"></span>
+                <br />
+                <a class="s_button_1 s_main_color_bgr" href="/Identity/Account/Register/"><span class="s_text">Devam Et!</span></a>
+            </form>
+        </div>
+
+        <div class="grid_8 omega">
+            <h2 class="s_title_1"><span class="s_secondary_color">Kayıtlı</span> Müşteri</h2>
+
+            <div class="clear"></div>
+
+            <form id="account" method="post">
+                <div class="s_row_3 clearfix">
+                    Zaten Müşteriyim..<br />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Input.Email" class="form-label"></label>
+                        <input asp-for="Input.Email" size="35" class="form-control required email" autocomplete="username" aria-required="true" />
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Input.Password" class="form-label"></label>
+                        <input asp-for="Input.Password" size="35" class="form-control required" autocomplete="current-password" aria-required="true" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <br />
+                </div>
+                <span class="clear border_ddd"></span>
+                <br />
+                <div class="s_nav s_size_2 left">
+                    <ul class="clearfix">
+                        <li><a href="#">Şifremi Unuttum</a></li>
+                    </ul>
+                </div>
+                <button class="s_button_1 s_main_color_bgr" type="submit"><span class="s_text">Giriş</span></button>
+            </form>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+</div>
+<!-- end of content -->
